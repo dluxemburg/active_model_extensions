@@ -2,6 +2,7 @@ module ActiveModelExtensions
   module ValidationAlertable
 
     extend ActiveSupport::Concern
+    extend(ActiveModel::Callbacks)
 
     included do
       define_model_callbacks :run_validations
@@ -29,7 +30,6 @@ module ActiveModelExtensions
   class AlertingValidator < ActiveModel::Validator
     def setup(klass)
       unless klass.method_defined?(:alerts)
-        klass.extend(ActiveModel::Callbacks)
         klass.send(:include,ValidationAlertable) 
       end
     end
