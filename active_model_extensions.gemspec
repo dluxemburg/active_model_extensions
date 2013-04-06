@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Daniel Luxemburg"]
   spec.email         = ["daniel.luxemburg@gmail.com"]
   spec.description   = %q{Some Extension::Extensions for your ActiveModel::Models}
-  spec.summary       = %q{InstanceValidatable, ValidationAlertable, ActiveStateful}
+  spec.summary       = %q{InstanceValidatable, ValidationAlertable}
   spec.homepage      = ""
   spec.license       = "MIT"
 
