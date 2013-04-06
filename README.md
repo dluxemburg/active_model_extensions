@@ -1,6 +1,6 @@
 # ActiveModelExtensions
 
-TODO: Write a gem description
+Some Extension::Extensions for your ActiveModel::Models
 
 ## Installation
 
@@ -18,7 +18,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### ActiveModelExtensions::InstanceValidatable
+
+Include it in an Active Model class:
+
+```ruby
+class MyModel
+  
+  include ActiveModel::Model
+  include ActiveModelExtensions::InstanceValidatable
+  
+  attr_accessor :my_field
+
+end
+```
+
+Now instances of that class can be given instance-specific validators:
+
+ ```ruby
+  m = MyModel.new
+  m.instance_validators << MyValidator
+```
+
+### ActiveModelExtensions::ValidationAlertable
+
+Create a validator as a subclass of `ActiveModelExtensions::AlertingValidator` and `ActiveModelExtensions::ValidationAlertable` will be included into any model it is applied to.
+
+Your `ActiveModelExtensions::AlertingValidator` can add to the model's `alerts` as well as `erros`. The `alerts` object is a `ActiveModel::Errors` instance (just like `errors`), but doesn't prevent the model instance from validating or saving. Useful for user messages about an update or save action.
 
 ## Contributing
 
