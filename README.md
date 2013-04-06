@@ -46,6 +46,23 @@ Create a validator as a subclass of `ActiveModelExtensions::AlertingValidator` a
 
 Your `ActiveModelExtensions::AlertingValidator` can add to the model's `alerts` as well as `erros`. The `alerts` object is a `ActiveModel::Errors` instance (just like `errors`), but doesn't prevent the model instance from validating or saving. Useful for user messages about an update or save action.
 
+For example, `MyAlertingValidator` will add an `alert` message or an `error` message depending on the severity of the situation with a model's `:field` value, only refusing to validate it if it's really bad: 
+
+```ruby
+class MyAlertingValidator < ActiveModelExtensions::AlertingValidator
+
+  def validate(record)
+    if record.field < 50 && record.field >= 25
+      record.alerts.add(:field,"is is dangerously low, watch yourself")
+    end
+    if record.field < 25
+      record.errors.add(:field, "is way too low, please increase")
+    end
+  end
+
+end
+```
+
 ## Contributing
 
 1. Fork it
