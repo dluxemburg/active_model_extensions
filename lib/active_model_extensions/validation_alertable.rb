@@ -30,7 +30,7 @@ module ActiveModelExtensions
     def setup(klass)
       unless klass.method_defined?(:alerts)
         klass.extend(ActiveModel::Callbacks)
-        klass.class_eval("include ValidationAlertable") 
+        klass.send(:include,ValidationAlertable) 
       end
     end
   end
