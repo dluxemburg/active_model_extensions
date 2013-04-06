@@ -2,7 +2,7 @@ module ActiveModelExtensions
   module ValidationAlertable
 
     extend ActiveSupport::Concern
-    extend(ActiveModel::Callbacks)
+    extend ActiveModel::Callbacks
 
     included do
       define_model_callbacks :run_validations
